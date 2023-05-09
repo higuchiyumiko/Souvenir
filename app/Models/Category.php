@@ -12,10 +12,13 @@ class Category extends Model
     public function items(){
         return $this->hasMany(Item::class);
     }
+    public function getByLimit(int $limit_count=7){
+        return $this->orderBy('id','ASC')->limit($limit_count)->get();
+    }
     
      protected $fillable = [
         'id',
         'name',
     ];
-    protected $table = 'category';
+    protected $table = 'categories';
 }

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ItemsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,8 +13,8 @@ use App\Http\Controllers\ItemController;
 |
 */
 
-Route::get('/', function () {  
-    return view('items/index');
-});
+//Route::get('/', function () {  
+//    return view('items/index');
+//});
 
-//Route::get('/items',[ItemsController::class,'index']);
+Route::get('/',[ItemsController::class,'index']);
