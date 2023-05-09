@@ -9,9 +9,24 @@
     <body>
         <h1>お土産品口コミサイト</h1>
         <div class='items'>
+            @foreach($items as $item)
             <div class='item'>
-                <h2 class='title'>お土産品</h2>
-                <p class='body'>商品名</p>
+                <h2 class='title'>商品名:{{$item->name}}</h2>
+                @if($item->item_image!=null)
+                <img src="{{$item->item_image}}" alt="画像が読み込みエラー又はアップロードされていません"/>
+                @endif
+            @endforeach
+            <div class='body'>
+                @foreach($reviews as $review)
+                    <h3>タイトル:{{$review->title}}</h3>
+                    <a href="">この口コミを見る</a>
+                @endforeach
+            </div>
+            <aside>
+                @foreach($categories as $category)
+                    <p>{{$category->name}}</p>
+                @endforeach
+            </aside>
             </div>
         </div>
     </body>
