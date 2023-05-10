@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\ItemsController;
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,5 @@ use App\Http\Controllers\ItemsController;
 //});
 
 Route::get('/',[ItemsController::class,'index']);
+Route::get('/items/',[ItemsController::class,'nav']);
+Route::get('/items/search',[ItemsController::class,'search']);
