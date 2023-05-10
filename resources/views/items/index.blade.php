@@ -8,15 +8,18 @@
     </head>
     <body>
         <h1>お土産品口コミサイト</h1>
-        <div class='items'>
+        <div class='main'>
             @foreach($items as $item)
             <div class='item'>
                 <h2 class='title'>商品名:{{$item->name}}</h2>
                 @if($item->item_image!=null)
-                <img src="{{$item->item_image}}" alt="画像が読み込みエラー又はアップロードされていません"/>
+                <img src="{{$item->item_image}}" alt="画像が読み込みません"/>
+                @else
+                <p>画像はアップロードされていません</p>
                 @endif
             @endforeach
             <div class='body'>
+                <h2><a href="/items/">口コミを投稿したいお土産品を探す</a></h2>
                 @foreach($reviews as $review)
                     <h3>タイトル:{{$review->title}}</h3>
                     <a href="">この口コミを見る</a>
