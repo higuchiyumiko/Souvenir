@@ -7,6 +7,7 @@ use App\Models\Item;
 use App\Models\Category;
 use App\Models\Review;
 use App\Http\Controllers\Controller;
+use Cloudinary;
 
 class ItemsController extends Controller
 {
@@ -28,4 +29,21 @@ class ItemsController extends Controller
         
         return view('items.result',compact('items','name'));
     }
+    public function register(Request $request){
+        return view('items.register');
+    }
+    public function store(Request $request,Item $item){
+        $image_url=Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        $input=$request['items'];
+        $input+=['item_image'=>$image_url];
+        $item->fill($input)->save();
+        return redirect('/');
+    }
+    public function create(Request $request){
+        $data=Item::where('id',$request->id)->first();
+        return view('items.create',$data)->with(['data'=>$data]);
+    }
 }
+
+
+
