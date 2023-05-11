@@ -22,7 +22,7 @@
                 <h2><a href="/items/">口コミを投稿したいお土産品を探す</a></h2>
                 @foreach($reviews as $review)
                     <h3>タイトル:{{$review->title}}</h3>
-                    <a href="">この口コミを見る</a>
+                    <a href="/review/show/{{$review->id}}">この口コミを見る</a>
                 @endforeach
             </div>
             <aside>

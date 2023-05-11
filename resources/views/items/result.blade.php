@@ -12,13 +12,12 @@
         
         @forelse ($items as $item)
         <p>商品番号{{$item->id}}の「{{$item->name}}」がヒットしました！</p>
-        <a href=''>「{{$item->name}}」のレビュー投稿する</a><br>
+        <a href='/items/create/{{$item->id}}/'>「{{$item->name}}」のレビュー投稿する</a><br>
         <p>新しく商品を登録してレビュー投稿する方はこちら</p>
-        <a href=''>商品登録をする</a>
+        <a href='/items/register'>商品登録をする</a>
       @empty
-        <p>No posts!!</p>
-        <a href=''>商品登録をする</a>
+        <p>該当する商品がありません!<br>新しく商品登録される方はこちら↓</p>
+        <a href='/items/register'>商品登録をする</a>
       @endforelse
-        
     </body>
 </html>
