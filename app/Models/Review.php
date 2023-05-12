@@ -22,4 +22,7 @@ class Review extends Model
         public function item(){
             return $this->belongsTo(Review::class);
         }
+         public function getByLimit(int $limit_count=5){
+        return $this->orderBy('updated_at','DESC')->limit($limit_count)->get();
+    }
 }

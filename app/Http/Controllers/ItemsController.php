@@ -12,7 +12,7 @@ use Cloudinary;
 class ItemsController extends Controller
 {
     public function index(Item $item,Category $category,Review $review){
-        return view('items/index')->with(['items'=>$item->get()])->with(['categories'=>$category->getByLimit()])->with(['reviews'=>$review->get()]);
+        return view('items/index')->with(['items'=>$item->get()])->with(['categories'=>$category->getByLimit()])->with(['reviews'=>$review->getByLimit()]);
         //　　　　　　　　　　　　　　　　　↑blade内で使う変数名
     }
     public function nav(Item $item){
@@ -42,6 +42,21 @@ class ItemsController extends Controller
     public function create(Request $request){
         $data=Item::where('id',$request->id)->first();
         return view('items.create',$data)->with(['data'=>$data]);
+    }
+    public function show(Item $item){
+        return view('items.show')->with(['items'=>$item->getByLimit()]);
+    }
+    public function edit(Request $request,Item $item){
+        $input=$request['id'];
+        $data=item::find($input);
+        return view('items/edit',compact('data'))->with(['items'=>$item->get()]);
+    }
+    public function update(Request $request ,Item $item){
+   //     $image_url=Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        $input=$request['item'];
+     //   $input+=['item_image'=>$image_url];
+        $item->fill($input)->save();
+        return redirect('/');
     }
 }
 
