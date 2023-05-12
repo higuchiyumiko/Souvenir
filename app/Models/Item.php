@@ -16,6 +16,9 @@ class Item extends Model
     public  function reviews(){
         return $this->hasMany(Item::class);
     }
+    public function getByLimit(int $limit_count=5){
+        return $this->orderBy('id','ASC')->limit($limit_count)->get();
+    }
     protected $fillable = [
         'name',
         'item_image',

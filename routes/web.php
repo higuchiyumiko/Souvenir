@@ -27,6 +27,6 @@ Route::post('/items/store',[ItemsController::class,'store']);
 Route::get('/items/create/{id}',[ItemsController::class,'create']);
 Route::post('/review/store',[ReviewsController::class,'store2']);
 Route::get('/review/show/{id}',[ReviewsController::class,'show']);
-
-
-
+Route::get('/items/show',[ItemsController::class,'show']);
+Route::get('/items/edit/{id}',[ItemsController::class,'edit']);
+Route::put('items/update/{id}',[ItemsController::class,'update']);

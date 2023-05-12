@@ -19,7 +19,7 @@
              
                 <div class="image">
                 <input type="file" name="image">
-            </div>
+                </div>
               
                 <p>Allergy</p>
                 <textarea name="items[allergy]" placeholder="卵やそばなど"></textarea>
