@@ -13,7 +13,7 @@
                     @if ($data->item_id==$item->id)
                     <p class='title'>商品名：{{$item->name}}</p>
                     @endif
-                    @endforeach
+                 @endforeach
                     
                 
             <form action="/items/update/{{ $data->id }}" method="POST"　enctype="multipart/form-data">
@@ -49,6 +49,9 @@
                 </div><br>
                 <input type="submit" value="保存">
             </form>
+        　　
+        　
         　　</div>
+        　　
     </body>
 </html>

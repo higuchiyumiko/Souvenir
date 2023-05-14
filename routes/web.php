@@ -30,3 +30,6 @@ Route::get('/review/show/{id}',[ReviewsController::class,'show']);
 Route::get('/items/show',[ItemsController::class,'show']);
 Route::get('/items/edit/{id}',[ItemsController::class,'edit']);
 Route::put('items/update/{id}',[ItemsController::class,'update']);
+Route::delete('items/delete/{id}',[ItemsController::class,'delete']);
+
+

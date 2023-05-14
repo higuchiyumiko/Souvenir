@@ -18,17 +18,17 @@
                     <img src="{{$item->item_image}}" alt="画像が読み込めません"><br>
                 　@endif
                 @endforeach
-                 @foreach($reviews as $review)
+                @foreach($reviews as $review)
                     <h3>タイトル:{{$review->title}}</h3>
                     <a href="/review/show/{{$review->id}}">この口コミを見る</a>
                 @endforeach
-                
             </div>
-            <aside>
-                @foreach($categories as $category)
-                    <p>{{$category->name}}</p>
-                @endforeach
-            </aside>
+                
+                    <div class='paginate'>
+                        {{$reviews->links()}}
+                    </div>
+                
+            
             </div>
         </div>
     </body>
