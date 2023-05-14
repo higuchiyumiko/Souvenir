@@ -17,10 +17,14 @@
                            <img src="{{ $item->item_image }}" alt="画像が読み込めません。"/>
                         </div>
                         <p>販売会社：{{$item->market_name}}</p>
-                        <div class="edit"><a href="/items/edit/{{$item->id}}">この商品を編集する</a></div>
-            @endforeach
+                        <div class="edit"><a href="/items/edit/{{$item->id}}">この商品を編集する</a></div><br>
                     </div>
                 </div>
+                <form action="/items/delete/{{$item->id}}" id="form_{{$item->id}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" onclick="deletePost({{$item->id}})">この商品を削除する</button>
+                </form>
                  <script>
                             function deletePost(id) {
                                 'use strict'
@@ -30,8 +34,10 @@
                                 }
                             }
                  </script>
+　　　　　　 @endforeach   
+　　　　　　 <div class='paginate'>
+            {{ $items->links() }}
         </div>
-        
-      
+        </div>
     </body>
 </html>

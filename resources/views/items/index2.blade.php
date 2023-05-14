@@ -34,3 +34,8 @@
         </div>
     </body>
 </html>
+<aside>
+                @foreach($categories as $category)
+                    <a href="/category/{id}">{{$category->name}}</a>
+                @endforeach
+            </aside>

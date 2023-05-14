@@ -12,7 +12,7 @@ use Cloudinary;
 class ItemsController extends Controller
 {
     public function index(Item $item,Category $category,Review $review){
-        return view('items/index')->with(['items'=>$item->get()])->with(['categories'=>$category->getByLimit()])->with(['reviews'=>$review->getByLimit()]);
+        return view('items/index')->with(['items'=>$item->get()])->with(['categories'=>$category->getByLimit()])->with(['reviews'=>$review->getPaginateByLimit()]);
         //　　　　　　　　　　　　　　　　　↑blade内で使う変数名
     }
     public function nav(Item $item){
@@ -44,7 +44,7 @@ class ItemsController extends Controller
         return view('items.create',$data)->with(['data'=>$data]);
     }
     public function show(Item $item){
-        return view('items.show')->with(['items'=>$item->getByLimit()]);
+        return view('items.show')->with(['items'=>$item->getPaginateByLimit()]);
     }
     public function edit(Request $request,Item $item){
         $input=$request['id'];
@@ -56,6 +56,10 @@ class ItemsController extends Controller
         $input=$request['item'];
      //   $input+=['item_image'=>$image_url];
         $item->fill($input)->save();
+        return redirect('/');
+    }
+    public function delete(Item $item){
+        $item->delete();
         return redirect('/');
     }
 }
