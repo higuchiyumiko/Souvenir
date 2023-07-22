@@ -11,8 +11,9 @@ use Cloudinary;
 
 class ItemsController extends Controller
 {
-    public function index(Item $item,Category $category,Review $review){
-        return view('items/index')->with(['items'=>$item->get()])->with(['categories'=>$category->getByLimit()])->with(['reviews'=>$review->getPaginateByLimit()]);
+    public function index(Review $review){
+        return view('items.index')->with(['reviews'=>$review->getPaginateByLimit()]);
+      //  return view('items/index')->with(['items'=>$item->get()])->with(['categories'=>$category->getByLimit()])->with(['reviews'=>$review->getPaginateByLimit()]);
         //　　　　　　　　　　　　　　　　　↑blade内で使う変数名
     }
     public function nav(Item $item){
